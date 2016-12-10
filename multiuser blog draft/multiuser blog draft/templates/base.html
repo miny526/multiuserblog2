@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link type="text/css" rel="stylesheet" href="/static/main.css" />
+	<link rel="stylesheet" href="http://weloveiconfonts.com/api/?family=zocial">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Minyoung's Blog</title>
+</head>
+
+<body>
+	<a href="/" class="main-title">
+		Minyoung's Blog
+	</a>
+	
+
+	<div class="login-area">
+		{% if user %}
+			Hi, {{user.name}} (<a class="login-link" href="/blog/logout/confirm">Log Out</a>)
+		{% else %}
+			<a class="login-link" href="/blog/login">Log In</a>
+			|
+			<a class="login-link" href="/blog/signup">Sign Up</a>
+		{% endif %}
+	</div>
+
+	<div class="row" id="links">
+		{% if user %}
+			<div class="col-4" id="blog_home">
+				<a class="front-login-link" href="/blog">Blog</a>
+			</div>
+			<div class="col-4" id="newpost">
+				<a class="front-login-link" href="/blog/newpost">New Post</a>
+			</div>
+			<div class="col-4" id="aboutme">
+				<a class="front-login-link" href="/blog/aboutme">About Me</a>
+			</div>
+		{% else %}
+			<div class="col-3" id="blog_home">
+				<a class="front-login-link" href="/blog">Blog</a>
+			</div>
+			<div class="col-3" id="sign_up">
+				<a class="front-login-link" href="/blog/signup">Sign Up</a>
+			</div>
+			<div class="col-3" id="login">
+				<a class="front-login-link" href="/blog/login">Log In</a>
+			</div>
+			<div class="col-3" id="newpost">
+				<a class="front-login-link" href="/blog/newpost">New Post</a>
+			</div>
+		{% endif %}
+	</div>
+	<br>
+
+	<div id="content">
+	{% block content %}
+	<div class="row">
+		<img class="main-img" src="images/rsz_blog.png" alt="Blog Home Main Image">
+	</div>
+	{% endblock %}
+	</div>
+	<br>
+	<br>
+	<br>
+	<footer>
+		<div id="social">
+			<a href="https://twitter.com/home?status=https://github.com/udacity/responsive-images" class="zocial-twitter">Twitter</a>
+     		<a href="https://www.facebook.com/sharer/sharer.php?u=https://github.com/udacity/responsive-images" class="zocial-facebook">Facebook</a>
+      		<a href="https://plus.google.com/share?url=https://github.com/udacity/responsive-images" class="zocial-googleplus">Google+</a>
+    	</div>
+    </footer>
+
+</body>
+
+
+</html>

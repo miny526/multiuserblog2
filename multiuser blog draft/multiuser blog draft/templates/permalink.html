@@ -1,0 +1,16 @@
+<!-- Page that shows just one entry -->
+
+{% extends "base.html" %}
+
+{% block content %}
+	{{ post.render() | safe }}
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="success">
+		Successfully Posted
+	</div>
+	<br>
+	<a class="backto" href="/blog"> Back to blog </a>
+{% endblock %}

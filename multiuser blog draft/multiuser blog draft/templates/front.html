@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+	{% for p in posts %}
+		<!-- render is under Post class. Renders post.html -->
+		{{ p.render() | safe }}
+		<br>
+		{{error}}
+		<br>
+		<br>
+	{% endfor %}
+
+{% endblock %}

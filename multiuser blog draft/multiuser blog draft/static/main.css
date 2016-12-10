@@ -1,0 +1,273 @@
+@media screen and (min-width:800px) {
+	body {
+		font-size: 14px;
+		max-width: 800px;
+	}
+
+	footer {
+		width: 800px;
+	}
+
+	.row {
+		width: 800px;
+	}
+	.col-3 {
+		font-size: 20px;
+	}
+	.main-title {
+		font-size: 40px;
+	}
+
+	.post-title {
+		font-size: 22px;
+	}
+
+	.post-content {
+		font-size: 15px;
+	}
+}
+
+@media screen and (max-width:799px) {
+	body {
+		font-size: 14px;
+		max-width: 100%;
+	}
+
+	footer {
+		max-width: 100%;
+	}
+
+	.row {
+		max-width: 100%;
+	}
+
+	.col-3 {
+		font-size: 20px;
+	}
+	.main-title {
+		font-size: 40px;
+	}
+
+	.post-title {
+		font-size: 22px;
+	}
+
+	.post-content {
+		font-size: 15px;
+	}
+}
+
+@media screen and (max-width: 600px) {
+	body {
+		font-size: 12px;
+		max-width: 100%;
+	}
+
+	.main-title {
+		font-size: 35px;
+	}
+	.col-3 {
+		font-size: 18px;
+	}
+	.post-title {
+		font-size: 19px;
+	}
+	.post-content {
+		font-size: 13px;
+	}
+}
+
+.main-img {
+		max-width: 100%;
+		height: auto;
+}
+
+
+body {
+		font-family: "Courier New", Courier, monospace;
+		margin: 0 auto;
+		padding: 10px;
+		color: #333;
+}
+
+[class*="zocial-"]:before {
+  color: black;
+  display: inline-block;
+  font-family: 'zocial', sans-serif;
+  font-size: 20px;
+  text-shadow: 1px 1px 1px #aaa;
+  width: 2em;
+  text-decoration: none;
+}
+
+footer {
+  border-top: 1px dotted gray;
+  margin-top: 25px;
+  padding-top: 15px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/*For new Post*/
+h2 {
+	font-size: 24px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.backto {
+	text-decoration: none;
+	color: #333;
+}
+
+.login-area {
+	font-size: 13px;
+	color: gray;
+	position: absolute;
+	top: 10px;
+	right: 10px;
+}
+
+.login-link {
+	color: gray;
+	text-decoration: none;
+}
+
+.login-link:visited {
+	color: gray;
+}
+
+.login-link:hover {
+	text-decoration: underline;
+}
+.error {
+	color: red;
+}
+
+.login-box {
+	width: 200px;
+	font-size: 15px;
+	padding: 2px;
+	font-family: monospace;
+}
+
+/*For new post*/
+label {
+	display: block;
+	font-size: 15px;
+	margin-bottom: 10px;
+}
+
+.subject-box {
+	width: 500px;
+	font-size: 20px;
+	padding: 2px;
+	font-family: monospace;
+}
+
+
+textarea {
+	width: 500px;
+	height: 400px;
+	font-size: 17px;
+	font-family: monospace;
+}
+
+.commentbox {
+	width: 600px;
+	height: 50px;
+	font-size: 15px;
+	font-family: monospace;
+}
+input[type=submit] {
+	font-size: 24px;
+	margin-top: 10px;
+}
+
+/*"Minyoung's Blog"*/
+.main-title {
+	display: block;
+	color: #222;
+	font-weight: bold;
+	text-align: center;
+	margin-top: 25px;
+	margin-bottom: 30px;
+	text-decoration: none;
+}
+
+.post-heading {
+	position: relative;
+	border-bottom: 3px solid #999;
+}
+
+.post-title {
+	font-weight: bold;
+}
+
+.post-date {
+	position: absolute;
+	right: 0px;
+	bottom: 0px;
+	color: #999;
+}
+
+.post-content {
+	margin-top: 5px;
+}
+
+.row {
+	display: flex;
+	margin-bottom: 25px;
+}
+
+.col-3 {
+	width: 25%;
+	text-align: center;
+}
+
+.col-4 {
+	width: 33.333333%;
+	text-align: center;
+	font-size: 20px;
+}
+
+.front-login-link {
+	color: gray;
+	text-decoration: none;
+}
+
+.editpost {
+	text-decoration: none;
+	color: gray;
+}
+
+.editpost:hover{
+	text-decoration: underline;
+}
+
+.deletepost {
+	text-decoration: none;
+	color: gray;
+}
+
+.deletepost:hover {
+	text-decoration: underline;
+}
+
+.backto:hover {
+	text-decoration: underline;
+}
+
+.success {
+	color: blue;
+}
+
+.comment-date {
+	text-decoration: none;
+	color: gray;
+}
+
+.comment-date:hover {
+	text-decoration: underline;
+}
+

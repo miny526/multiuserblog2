@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2> Logout </h2>
+<div class="error">{{error1}}</div>
+<br>
+<div class="error">{{error2}}</div>
+<br>
+<br>
+Are you sure you want to log out? 
+<a class="logout" href="/blog/logout">Log Out</a>
+<br><br>
+<a class="backto" href="/blog">Back to blog</a>
+
+{% endblock %}
