@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+	<h2> Leave a Comment for: </h2>
+	<div class="post-heading">
+		<div class='post-title'>
+			{{ post.subject }} by {{ post.username }}
+		</div>
+	</div>
+	<div class="post-content">
+		{{ post.content | safe }}
+	</div>
+	<br>
+
+	<form method="post">
+		<label>
+			<div>Comment</div>
+			<input class="comment-box" type="text" name="comment" value="{{comment}}">
+		</label>
+		<div class="error"> {{error}} </div>
+		<input type="submit">
+		<input type="hidden" name="post_id" value="{{post.key()}}">
+		<input type="hidden" name="user_id" value="{{user.key()}}">
+	</form>
+	<br>
+	<br>
+	<em><a class="backto" href="/blog">Cancel</a></em>
+	<hr>
+
+	{% for c in comments %}
+		{{ c.render() | safe }}
+		<br>
+		<br>
+	{% endfor %}
+{% endblock %}

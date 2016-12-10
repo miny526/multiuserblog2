@@ -1,0 +1,30 @@
+<!-- HTML for a particular post -->
+
+<div class="post">
+	<div class="post-heading">
+		<div class="post-title">
+			{{ p.subject }}
+		</div>
+
+		<div class ="post-date">
+			<!-- formatting string -->
+			<a class="editpost" href="{{'/blog/editpost/%s' % p.key().id()}}"> Edit</a>
+			|
+			<a class="deletepost" href="{{'/blog/deletepost/%s' % p.key().id()}}">Delete</a>
+			|
+			{{ p.created.strftime("%b %d, %Y") }}
+		</div>
+	</div>
+
+	<div class="post-content">
+		{{ p._render_text | safe }}
+		<br>
+		<br>
+		<a class="comment" href="{{'/blog/comment/%s' % p.key().id()}}"> Comment</a>
+		|
+		<a class="like" href=""
+		<br>
+		<br>
+		{{error}}
+	</div>
+</div>
