@@ -173,12 +173,13 @@ textarea {
 	font-family: monospace;
 }
 
-.commentbox {
+.comment-box {
 	width: 600px;
 	height: 50px;
 	font-size: 15px;
 	font-family: monospace;
 }
+
 input[type=submit] {
 	font-size: 24px;
 	margin-top: 10px;
@@ -214,6 +215,25 @@ input[type=submit] {
 .post-content {
 	margin-top: 5px;
 }
+
+.by-author {
+	font-size: 15px;
+	font-weight: lighter;
+}
+
+.comment-content {
+	font-weight: bold;
+}
+
+.comment-time {
+	display: inline-block;
+	right: 0px;
+	bottom: 0px;
+	color: #999;
+	font-size: 12px;
+	padding-bottom: 10px;
+}
+
 
 .row {
 	display: flex;
@@ -270,4 +290,17 @@ input[type=submit] {
 .comment-date:hover {
 	text-decoration: underline;
 }
+
+.no-hyper {
+	text-decoration: none;
+	color: gray;
+}
+
+.no-hyper:hover {
+	text-decoration: underline;
+}
+
+
+
+
 

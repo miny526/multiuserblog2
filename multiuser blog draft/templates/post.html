@@ -3,7 +3,8 @@
 <div class="post">
 	<div class="post-heading">
 		<div class="post-title">
-			{{ p.subject }}
+			"{{ p.subject }}"
+			<span class="by-author"> by {{ p.username }}</span>
 		</div>
 
 		<div class ="post-date">
@@ -20,9 +21,9 @@
 		{{ p._render_text | safe }}
 		<br>
 		<br>
-		<a class="comment" href="{{'/blog/comment/%s' % p.key().id()}}"> Comment</a>
+		<a class="no-hyper" href="{{'/blog/comment/%s' % p.key().id()}}"> Comment</a>
 		|
-		<a class="like" href=""
+		<a class="no-hyper" href="{{'/blog/like/%s' % p.key().id()}}"> Like({{p.likes}})</a>
 		<br>
 		<br>
 		{{error}}

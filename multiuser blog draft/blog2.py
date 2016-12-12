@@ -156,6 +156,7 @@ class Post(db.Model):
 	created = db.DateTimeProperty(auto_now_add = True)
 	last_modified = db.DateTimeProperty(auto_now = True)
 	user_id = db.IntegerProperty(required = True)
+	username=db.StringProperty(required=True)
 	likes=db.IntegerProperty()
 	likers=db.StringListProperty()
 
@@ -201,12 +202,13 @@ class NewPost(Handler):
 	def post(self):
 		subject = self.request.get('subject')
 		content = self.request.get('content')
+		username=self.user.name
 		likes=0
 		likers=[]
 
 		if subject and content:
 			p = Post(parent=blog_key(), subject=subject, content=content, user_id=self.user.key().id(),
-				likes=likes, likers=likers)
+				likes=likes, likers=likers, username=username)
 			p.put()
 			self.redirect('/blog/%s' % str(p.key().id()))
 		else:
@@ -305,7 +307,7 @@ class Login(Handler):
 class Logout(Handler):
 	def get(self):
 		self.logout()
-		self.redirect('/blog/login')
+		self.redirect('/blog')
 
 class LogoutConfirm(Handler):
 	def get(self):
@@ -327,6 +329,16 @@ class LoginWelcome(Handler):
 			self.render('welcome.html', username = self.user.name)
 		else:
 			self.redirect('/blog/signup')
+
+
+# class Author(db.Model):
+# 	name = db.StringProperty()
+
+
+# class Story(db.Model):
+# 	author = db.ReferenceProperty(Author)
+# 	story = db.get(story_key)
+# 	author_name = story.author.name
 
 #######EDITING, COMMENTING AND DELETING
 class EditPost(Handler):
@@ -407,27 +419,23 @@ class Comment(db.Model):
 	created = db.DateTimeProperty(auto_now_add=True)
 	last_modified = db.DateTimeProperty(auto_now = True)
 	user_id = db.StringProperty(required=True)
+	commentauthor = db.StringProperty(required=True)
 
-
-	# def render(self):
-	# 	self._render_text=self.comment.replace('\n', '<br>')
-	# 	return render_str('comment.html', c = self)
+	def render(self):
+		self._render_text=self.comment.replace('\n', '<br>')
+		return render_str('comment.html', c = self)
 
 class NewComment(Handler):
 	def get(self, post_id):
 		if self.user:
 			key = db.Key.from_path('Post', int(post_id), parent=blog_key())
-			#storing key in post
 			post = db.get(key)
-			#post = Post.get_by_id(4572868859920384)
-			comments = Comment.all().filter('post =', post.key).order('-created').get()
-			#comments = Comment.query(Comment.post == key).all()
-			# for comment in comments:
-			# 	print comments.comment	
+			comments=Comment.all().filter('post =', post.key()).order('-created')
+			# posts = Post.all().order('-created')
+			# u = User.all().filter('name =', name).get()
+		#posts = db.GqlQuery("select * from Post order by created desc")
 			if post:
 				self.render('comment.html', post=post, comments=comments)
-			# else:
-			# 	print "Post Not Found"
 		else:
 			error = "You must log in to continue"
 			self.render('login-form.html', error=error)
@@ -436,16 +444,50 @@ class NewComment(Handler):
 		comment = self.request.get('comment')
 		key = db.Key.from_path('Post', int(post_id), parent=blog_key())
 		post = db.get(key)
+		commentauthor=self.user.name
 
 		if comment:
-			c = Comment(parent=comment_key(), post=post, comment=comment, 
-				user_id=str(self.user.key().id()))
+			c = Comment(parent=comment_key(), post=post, comment=comment, user_id=str(self.user.key().id()),
+				commentauthor=commentauthor)
 			c.put()
 			self.redirect('/blog/%s' % str(post.key().id()))
 		else:
 			error = "Comment cannot be blank"
 			self.render('comment.html', comment=comment, error=error)
 
+# class EditComment(Handler):
+# 	def get(self, post_id, comment_id):
+# 		if self.user:
+# 			key = db.Key.from_path('Post', int(post_id), parent=blog_key())
+# 			#Gets the post data based on what is passed from post_id into key
+# 			post = db.get(key)
+# 			c_key = db.Key.from_path('Comment', int(comment_id), parent=comment_key())
+# 			comment=db.get(key)
+
+# 			if post and post.user_id==self.user.key().id() and comment.user_id==self.uesr.key().id():
+# 				self.render('editcomment.html', c=comment)
+# 			else:
+# 				error1 = "Only the author of this post can edit/delete."
+# 				error2 = "Please log out to change user."
+# 				self.render('logoutconfirm.html', error1=error1, error2=error2)
+# 		else:
+# 			error="You must log in to continue"
+# 			self.render('login-form.html', error = error)
+
+# 	def post(self, post_id):
+# 		subject = self.request.get('subject')
+# 		content = self.request.get('content')
+# 		if subject and content:
+# 			key = db.Key.from_path('Post', int(post_id), parent=blog_key())
+# 			post = db.get(key)
+# 			post.subject = subject
+# 			post.content = content
+# 			post.put()
+# 			self.redirect('/blog/%s' % post_id)
+
+# 		else:
+# 				error = "Please enter both subject and content"
+# 				self.render('post.html', p=post)
 
 class LikePost(Handler):
 	def get(self, post_id):
@@ -473,7 +515,6 @@ class LikePost(Handler):
 			self.render('login-form.html', error=error)
 
 
-
 app = webapp2.WSGIApplication([('/', MainPage),
 	('/blog/unit2/signup', Unit2Signup),
 	('/blog/login/welcome', LoginWelcome),
@@ -493,16 +534,3 @@ app = webapp2.WSGIApplication([('/', MainPage),
 	debug = True)
 
  
-
-
-
-
-
-
-
-
-
-
-
-
-

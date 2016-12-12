@@ -10,7 +10,7 @@ handlers:
   static_dir: images
 
 - url: /.*
-  script: blog.app
+  script: blog2.app
 libraries:
 - name: jinja2
   version: latest
