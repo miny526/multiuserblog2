@@ -38,14 +38,15 @@
 			</div>
 
 			<span class="comment-time">
-				<a class="no-hyper" href="{{'/blog/editcomment/%s' %c.key().id()}}">Edit</a>
+				<a class="no-hyper" href="{{'/blog/post/%s/editcomment/%s' % (post.key().id(), c.key().id())}}">Edit</a>
 				|
-				<a class="no-hyper" href="{{'/blog/deletecomment/%s' % c.key().id()}}">Delete</a>
+				<a class="no-hyper" href="{{'/blog/post/%s/deletecomment/%s' % (post.key().id(), c.key().id())}}">Delete</a>
 				|
-				{{ c.created.strftime("%b %d, %Y")}}
+				{{ c.created.strftime("%b %d, %Y, %H:%M:%S")}}
 			</span>		
 		</div>
 	{% endfor %}
+
 
 
 {% endblock %}

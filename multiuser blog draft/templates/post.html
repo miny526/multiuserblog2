@@ -21,7 +21,7 @@
 		{{ p._render_text | safe }}
 		<br>
 		<br>
-		<a class="no-hyper" href="{{'/blog/comment/%s' % p.key().id()}}"> Comment</a>
+		<a class="no-hyper" href="{{'/blog/comment/%s' % p.key().id()}}"> Comment({{p.commentcount}})</a>
 		|
 		<a class="no-hyper" href="{{'/blog/like/%s' % p.key().id()}}"> Like({{p.likes}})</a>
 		<br>
